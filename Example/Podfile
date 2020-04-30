@@ -1,0 +1,19 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'MYMVVM_Example' do
+  pod 'MYMVVM', :path => '../'
+  pod 'MYUtils', :path => '../../MYUtils'
+  pod 'MYRouter', :path => '../../MYRouter'
+  pod 'MYImageCache', :path => '../../MYImageCache'
+  
+  pod 'Masonry'
+  pod 'ReactiveObjC'
+  
+  target 'MYMVVM_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase'
+  end
+end

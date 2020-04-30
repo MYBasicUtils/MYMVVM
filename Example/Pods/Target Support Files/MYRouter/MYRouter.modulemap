@@ -1,0 +1,6 @@
+framework module MYRouter {
+  umbrella header "MYRouter-umbrella.h"
+
+  export *
+  module * { export * }
+}

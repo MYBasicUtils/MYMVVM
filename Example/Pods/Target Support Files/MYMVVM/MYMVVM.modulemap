@@ -1,0 +1,6 @@
+framework module MYMVVM {
+  umbrella header "MYMVVM-umbrella.h"
+
+  export *
+  module * { export * }
+}

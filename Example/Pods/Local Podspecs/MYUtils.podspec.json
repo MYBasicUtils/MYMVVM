@@ -1,0 +1,30 @@
+{
+  "name": "MYUtils",
+  "version": "0.1.0",
+  "summary": "A short description of MYUtils.",
+  "description": "MYUtils",
+  "homepage": "https://github.com/WenMingYan/MYUtils",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "WenMingYan": "wenmy@tuya.com"
+  },
+  "source": {
+    "git": "https://github.com/WenMingYan/MYUtils.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MYUtils/Classes/**/*",
+  "dependencies": {
+    "MBProgressHUD": [
+
+    ],
+    "ReactiveObjC": [
+
+    ]
+  }
+}

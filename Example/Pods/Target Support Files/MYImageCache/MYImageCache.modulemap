@@ -1,0 +1,6 @@
+framework module MYImageCache {
+  umbrella header "MYImageCache-umbrella.h"
+
+  export *
+  module * { export * }
+}
