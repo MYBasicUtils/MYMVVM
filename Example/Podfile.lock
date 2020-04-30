@@ -1,0 +1,60 @@
+PODS:
+  - FBSnapshotTestCase (2.1.4):
+    - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
+  - FBSnapshotTestCase/Core (2.1.4)
+  - FBSnapshotTestCase/SwiftSupport (2.1.4):
+    - FBSnapshotTestCase/Core
+  - Masonry (1.1.0)
+  - MBProgressHUD (1.2.0)
+  - MYImageCache (0.1.0)
+  - MYMVVM (0.1.0):
+    - Masonry
+    - MYImageCache
+    - MYRouter
+    - MYUtils
+  - MYRouter (0.1.0):
+    - MYUtils
+  - MYUtils (0.1.0):
+    - MBProgressHUD
+    - ReactiveObjC
+  - ReactiveObjC (3.1.1)
+
+DEPENDENCIES:
+  - FBSnapshotTestCase
+  - Masonry
+  - MYImageCache (from `../../MYImageCache`)
+  - MYMVVM (from `../`)
+  - MYRouter (from `../../MYRouter`)
+  - MYUtils (from `../../MYUtils`)
+  - ReactiveObjC
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - FBSnapshotTestCase
+    - Masonry
+    - MBProgressHUD
+    - ReactiveObjC
+
+EXTERNAL SOURCES:
+  MYImageCache:
+    :path: "../../MYImageCache"
+  MYMVVM:
+    :path: "../"
+  MYRouter:
+    :path: "../../MYRouter"
+  MYUtils:
+    :path: "../../MYUtils"
+
+SPEC CHECKSUMS:
+  FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
+  MYImageCache: 2e5443ff46a8b1bbf136de3594d0da94483c89fd
+  MYMVVM: 9621753b411be70b9db9b541e55c1644e8b33dfb
+  MYRouter: f64e2b16d3863d7ee6dc4cb272862160abe9b124
+  MYUtils: 1442f43627aec8fabf7b2f9ebb8c6be4ca687917
+  ReactiveObjC: 011caa393aa0383245f2dcf9bf02e86b80b36040
+
+PODFILE CHECKSUM: 9273f7eef37a5ae5db397216c9b54dc310af38e5
+
+COCOAPODS: 1.8.4

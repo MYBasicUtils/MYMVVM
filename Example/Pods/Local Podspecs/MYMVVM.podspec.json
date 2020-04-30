@@ -1,0 +1,36 @@
+{
+  "name": "MYMVVM",
+  "version": "0.1.0",
+  "summary": "A short description of MYMVVM.",
+  "description": "MYMvvm",
+  "homepage": "https://github.com/WenMingYan/MYMVVM",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "WenMingYan": "wenmy@tuya.com"
+  },
+  "source": {
+    "git": "https://github.com/WenMingYan/MYMVVM.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MYMVVM/Classes/**/*",
+  "dependencies": {
+    "MYUtils": [
+
+    ],
+    "Masonry": [
+
+    ],
+    "MYRouter": [
+
+    ],
+    "MYImageCache": [
+
+    ]
+  }
+}

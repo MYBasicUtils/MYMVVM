@@ -1,0 +1,27 @@
+{
+  "name": "MYRouter",
+  "version": "0.1.0",
+  "summary": "A short description of MYRouter.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/WenMingYan/MYRouter",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "WenMingYan": "wenmy@tuya.com"
+  },
+  "source": {
+    "git": "https://github.com/WenMingYan/MYRouter.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "MYRouter/Classes/**/*",
+  "dependencies": {
+    "MYUtils": [
+
+    ]
+  }
+}
