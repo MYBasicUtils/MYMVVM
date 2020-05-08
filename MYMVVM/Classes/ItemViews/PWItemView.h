@@ -10,7 +10,7 @@
 #import <Masonry/Masonry.h>
 #import "UIImageView+PWWebCatch.h"
 #import "AMIconfont.h"
-#import "PWUtils.h"
+#import "MYUtils.h"
 #import "PWItemViewProtocol.h"
 #import "PWViewModelProtocol.h"
 #import "PWSkinManager.h"

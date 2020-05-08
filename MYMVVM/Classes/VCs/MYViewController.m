@@ -1,20 +1,20 @@
 //
-//  PWViewController.m
+//  MYViewController.m
 //  PWNote
 //
 //  Created by 明妍 on 2018/11/25.
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
-#import "PWViewController.h"
+#import "MYViewController.h"
 
-@interface PWViewController ()
+@interface MYViewController ()
 
 
 
 @end
 
-@implementation PWViewController
+@implementation MYViewController
 #pragma mark - --------------------dealloc ------------------
 #pragma mark - --------------------life cycle--------------------
 

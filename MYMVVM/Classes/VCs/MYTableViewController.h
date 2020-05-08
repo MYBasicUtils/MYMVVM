@@ -6,13 +6,13 @@
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
-#import "PWViewController.h"
+#import "MYViewController.h"
 #import "PWTableViewDelegate.h"
 #import "PWInteractor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PWTableViewController : PWViewController
+@interface MYTableViewController : MYViewController
 
 - (UITableView *)tableView;
 

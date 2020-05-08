@@ -6,10 +6,10 @@
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
-#import "PWTableViewController.h"
+#import "MYTableViewController.h"
 #import "PWInteractor.h"
 
-@interface PWTableViewController ()
+@interface MYTableViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) PWTableViewDelegate *tableViewDelegate;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation PWTableViewController
+@implementation MYTableViewController
 
 #pragma mark - --------------------dealloc ------------------
 #pragma mark - --------------------life cycle--------------------
