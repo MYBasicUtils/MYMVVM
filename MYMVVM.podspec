@@ -10,25 +10,19 @@ Pod::Spec.new do |s|
                        DESC
 
   s.homepage         = 'https://github.com/WenMingYan/MYMVVM'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'WenMingYan' => 'wenmy@tuya.com' }
+  s.author           = { 'WenMingYan' => 'wenmingyan1990@gmail.com' }
   s.source           = { :git => 'https://github.com/WenMingYan/MYMVVM.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
 
   s.source_files = 'MYMVVM/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'MYMVVM' => ['MYMVVM/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   s.dependency 'MYUtils'
   s.dependency 'Masonry'
   s.dependency 'MYRouter'
   s.dependency 'MYImageCache'
+  s.dependency 'MYSkin'
+  s.dependency 'MYIconfont'
   
 end

@@ -1,5 +1,5 @@
 //
-//  PWViewController.h
+//  MYViewController.h
 //  PWNote
 //
 //  Created by 明妍 on 2018/11/25.
@@ -13,7 +13,7 @@
 #import "MYUtils.h"
 #import "PWSkinManager.h"
 
-@interface PWViewController : UIViewController
+@interface MYViewController : UIViewController
 
 + (NSString *)urlName;
 

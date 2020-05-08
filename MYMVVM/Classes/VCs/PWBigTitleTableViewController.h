@@ -6,12 +6,12 @@
 //  Copyright © 2019 明妍. All rights reserved.
 //
 
-#import "PWViewController.h"
+#import "MYViewController.h"
 
 @class PWTableViewDelegate;
 @class PWInteractor;
 
-@interface PWBigTitleTableViewController : PWViewController
+@interface PWBigTitleTableViewController : MYViewController
 
 - (UITableView *)tableView;
 - (PWTableViewDelegate *)tableViewDelegate;

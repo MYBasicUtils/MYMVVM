@@ -103,9 +103,9 @@
 //TODO: wmy 需要优化
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
-        @weakify(self);
+        weakify(self);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
+            strongify(self);
             [self.viewController performSelector:@selector(scrollViewDidEndDecelerating:) withObject:scrollView];
         });
     }
@@ -113,9 +113,9 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
-        @weakify(self);
+        weakify(self);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
+            strongify(self);
             [self.viewController performSelector:@selector(scrollViewDidEndDragging:willDecelerate:)
                                       withObject:scrollView
                                       withObject:@(decelerate)];
@@ -125,9 +125,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.viewController respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        @weakify(self);
+        weakify(self);
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
+            strongify(self);
             [self.viewController performSelector:@selector(scrollViewDidScroll:) withObject:scrollView];
         });
     }

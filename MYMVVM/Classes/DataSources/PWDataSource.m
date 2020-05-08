@@ -7,7 +7,7 @@
 //
 
 #import "PWDataSource.h"
-#import "NSArray+PWAddition.h"
+#import "NSArray+MYAddition.h"
 
 @implementation PWDataSource
 
@@ -16,13 +16,13 @@
 }
 
 - (PWViewModel *)headerViewModelWithSection:(NSInteger)section {
-    id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtIndex:section];
+    id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtSafeIndex:section];
     PWViewModel *headerViewModel = sectionModel.headerViewModel;
     return headerViewModel;
 }
 
 - (PWViewModel *)footerViewModelWithSection:(NSInteger)section {
-    id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtIndex:section];
+    id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtSafeIndex:section];
     PWViewModel *footerViewModel = sectionModel.footerViewModel;
     return footerViewModel;
 }
@@ -32,7 +32,7 @@
         return nil;
     }
     if (indexPath.section < self.sectionModels.count) {
-        id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtIndex:indexPath.section];
+        id<PWSectionModelProtocol> sectionModel = [self.sectionModels pw_objectAtSafeIndex:indexPath.section];
         if (!sectionModel.viewModels.count) {
             return nil;
         }
