@@ -7,8 +7,13 @@
 //
 
 #import "PWInteractor.h"
+<<<<<<< HEAD
 #import "NSString+PWEmpty.h"
 #import "PWUtils.h"
+=======
+#import "NSString+MYEmpty.h"
+#import "MYUtils.h"
+>>>>>>> develop
 
 @interface PWInteractorModel : NSObject
 @property (nonatomic, strong) NSString *eventName; /**< 响应名称  */
