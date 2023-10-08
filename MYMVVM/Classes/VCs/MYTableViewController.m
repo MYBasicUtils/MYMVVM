@@ -1,20 +1,20 @@
 //
-//  PWTableViewController.m
-//  PWNote
+//  MYTableViewController.m
+//  MYNote
 //
 //  Created by 明妍 on 2018/11/26.
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
 #import "MYTableViewController.h"
-#import "PWInteractor.h"
+#import "MYInteractor.h"
 
 @interface MYTableViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) PWTableViewDelegate *tableViewDelegate;
+@property (nonatomic, strong) MYTableViewDelegate *tableViewDelegate;
 
-@property (nonatomic, strong) PWInteractor *defaultInteractor; /**< 交互层  */
+@property (nonatomic, strong) MYInteractor *defaultInteractor; /**< 交互层  */
 
 @end
 
@@ -47,16 +47,16 @@
     return _tableView;
 }
 
-- (PWTableViewDelegate *)tableViewDelegate {
+- (MYTableViewDelegate *)tableViewDelegate {
     if (!_tableViewDelegate) {
-        _tableViewDelegate = [[PWTableViewDelegate alloc] initWithtableView:self.tableView];
+        _tableViewDelegate = [[MYTableViewDelegate alloc] initWithtableView:self.tableView];
     }
     return _tableViewDelegate;
 }
 
-- (PWInteractor *)defaultInteractor {
+- (MYInteractor *)defaultInteractor {
     if (!_defaultInteractor) {
-        _defaultInteractor = [[PWInteractor alloc] init];
+        _defaultInteractor = [[MYInteractor alloc] init];
     }
     return _defaultInteractor;
 }

@@ -1,14 +1,14 @@
 //
-//  PWTableViewController.h
-//  PWNote
+//  MYTableViewController.h
+//  MYNote
 //
 //  Created by 明妍 on 2018/11/26.
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
 #import "MYViewController.h"
-#import "PWTableViewDelegate.h"
-#import "PWInteractor.h"
+#import "MYTableViewDelegate.h"
+#import "MYInteractor.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (UITableView *)tableView;
 
-- (PWTableViewDelegate *)tableViewDelegate;
+- (MYTableViewDelegate *)tableViewDelegate;
 
-- (PWInteractor *)defaultInteractor;
+- (MYInteractor *)defaultInteractor;
 
 @end
 

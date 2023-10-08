@@ -10,8 +10,8 @@
 #endif
 #endif
 
-#import "PWImageConfigModel.h"
-#import "UIImageView+PWWebCatch.h"
+#import "MYImageConfigModel.h"
+#import "UIImageView+MYWebCatch.h"
 
 FOUNDATION_EXPORT double MYImageCacheVersionNumber;
 FOUNDATION_EXPORT const unsigned char MYImageCacheVersionString[];

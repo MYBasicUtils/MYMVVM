@@ -1,6 +1,6 @@
 //
 //  MYViewController.h
-//  PWNote
+//  MYNote
 //
 //  Created by 明妍 on 2018/11/25.
 //  Copyright © 2018 明妍. All rights reserved.
@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Masonry/Masonry.h>
-#import "PWRouter.h"
-#import "PWRouterAction.h"
-#import "MYUtils.h"
-#import "PWSkinManager.h"
+#import "MYRouter.h"
+#import "MYRouterAction.h"
+#import <MYUtils/MYUtils.h>
+#import <MYSkin/MYSkin.h>
 
 @interface MYViewController : UIViewController
 
@@ -27,24 +27,27 @@
 
 @end
 
-#define __PW_ROUTER_REGISTER__   \
+#define __MY_ROUTER_REGISTER__   \
 +(void)load {\
-PWRouterAction *action = [[PWRouterAction alloc] init];\
-action.actionType = PWRouterActionTypePushNewPage;\
+MYRouterAction *action = [[MYRouterAction alloc] init];\
+action.actionType = MYRouterActionTypePushNewPage;\
 action.address = [self urlName];\
 action.actionBlock = ^(UINavigationController *navigationController) {\
 [navigationController pushViewController:[[self alloc] init] animated:YES];\
 };\
-[[PWRouter sharedInstance] registerRouterWithURLAddress:[self urlName] action:action];\
+[[MYRouter sharedInstance] registerRouterWithURLAddress:[self urlName] action:action];\
 }
 
-#define __PW_ROUTER_REGISTER_PRESENT__   \
+#define __MY_ROUTER_REGISTER_PRESENT__   \
 +(void)load {\
-PWRouterAction *action = [[PWRouterAction alloc] init];\
-action.actionType = PWRouterActionTypePresentNewPage;\
+MYRouterAction *action = [[MYRouterAction alloc] init];\
+action.actionType = MYRouterActionTypePresentNewPage;\
 action.address = [self urlName];\
 action.actionBlock = ^(UINavigationController *navigationController) {\
     [navigationController presentViewController:[[self alloc] init] animated:YES completion:nil];\
 };\
-[[PWRouter sharedInstance] registerRouterWithURLAddress:[self urlName] action:action];\
+[[MYRouter sharedInstance] registerRouterWithURLAddress:[self urlName] action:action];\
 }
+
+
+

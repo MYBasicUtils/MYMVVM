@@ -10,10 +10,10 @@
 #endif
 #endif
 
-#import "MBProgressHUD+PWUtils.h"
-#import "NSArray+PWAddition.h"
-#import "NSDictionary+PWAddition.h"
-#import "NSString+PWEmpty.h"
+#import "MBProgressHUD+MYUtils.h"
+#import "NSArray+MYAddition.h"
+#import "NSDictionary+MYAddition.h"
+#import "NSString+MYEmpty.h"
 #import "MYApplicationMessages.h"
 #import "MYUtils.h"
 #import "UIView+MYAdditons.h"

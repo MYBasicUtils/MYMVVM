@@ -1,43 +1,38 @@
 //
-//  MYViewController.m
+//  MYItemView.m
 //  MYNote
 //
-//  Created by 明妍 on 2018/11/25.
+//  Created by 明妍 on 2018/11/26.
 //  Copyright © 2018 明妍. All rights reserved.
 //
 
-#import "MYViewController.h"
+#import "MYItemView.h"
 
-@interface MYViewController ()
+@implementation MYItemView
 
-
-
-@end
-
-@implementation MYViewController
 #pragma mark - --------------------dealloc ------------------
 #pragma mark - --------------------life cycle--------------------
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    self.view.backgroundColor = kWhiteColor;
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-}
-
-- (void)routerURL:(NSString *)routerURL withParam:(NSDictionary *)param {
-    //TODO: wmy
-//    [[MYRouter sharedInstance] routerURL:routerURL param:param];
+- (instancetype)init {
+    if (self = [super init]) {
+        self.backgroundColor = kWhiteColor;
+    }
+    return self;
 }
 
 #pragma mark - --------------------UITableViewDelegate--------------
 #pragma mark - --------------------CustomDelegate--------------
 #pragma mark - --------------------Event Response--------------
+
+- (void)setViewModel:(id<MYViewModelProtocol>)viewModel {
+    _viewModel = viewModel;
+}
+
 #pragma mark - --------------------private methods--------------
 #pragma mark - --------------------getters & setters & init members ------------------
 
-+ (NSString *)urlName {
-    NSAssert(false, @"subclass must override");
-    return @"base";
+
+- (void)onSelected {
+    
 }
+
 @end
