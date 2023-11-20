@@ -12,7 +12,7 @@
 
 //#import "UIImageView+MYWebCatch.h"
 //#import "MYIconfont.h"
-#import "MYUtils.h"
+#import <MYUtils/MYUtils.h>
 #import "MYItemViewProtocol.h"
 #import "MYViewModelProtocol.h"
 //#import "MYSkinManager.h"

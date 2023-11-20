@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) MYTableViewDelegate *tableViewDelegate;
+@property (nonatomic, strong) MYTableViewAutoAlyoutDelegate *autolayoutDelegate;
 
 @property (nonatomic, strong) MYInteractor *defaultInteractor; /**< 交互层  */
 
@@ -42,7 +43,8 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
-        _tableView.separatorStyle = UITableViewCellEditingStyleNone;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = UIColor.clearColor;
     }
     return _tableView;
 }
@@ -52,6 +54,13 @@
         _tableViewDelegate = [[MYTableViewDelegate alloc] initWithtableView:self.tableView];
     }
     return _tableViewDelegate;
+}
+
+- (MYTableViewAutoAlyoutDelegate *)autolayoutDelegate {
+    if (!_autolayoutDelegate) {
+        _autolayoutDelegate = [[MYTableViewAutoAlyoutDelegate alloc] initWithtableView:self.tableView];
+    }
+    return _autolayoutDelegate;
 }
 
 - (MYInteractor *)defaultInteractor {

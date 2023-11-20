@@ -7,7 +7,9 @@
 //
 
 #import "MYViewController.h"
+#import <MYUtils/MYUtils.h>
 #import "MYTableViewDelegate.h"
+#import "MYTableViewAutoAlyoutDelegate.h"
 #import "MYInteractor.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -17,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (UITableView *)tableView;
 
 - (MYTableViewDelegate *)tableViewDelegate;
+- (MYTableViewAutoAlyoutDelegate *)autolayoutDelegate;
 
 - (MYInteractor *)defaultInteractor;
 

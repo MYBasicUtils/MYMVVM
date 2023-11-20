@@ -11,7 +11,7 @@
 #import "MYViewModel.h"
 
 typedef void(^SuccessBlock)(void);
-typedef void(^FailBlock)(NSError *error);
+typedef void(^FailureBlock)(NSError * _Nonnull error);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,9 +19,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSString *method;
 
+@property(nonatomic, copy) SuccessBlock successBlock;
+
+@property(nonatomic, copy) FailureBlock failureBlock;
+
 @property (nonatomic, strong) NSArray<MYSectionModel<MYSectionModelProtocol> *> *sectionModels;
 
-- (void)requestWithSuccess:(SuccessBlock)successBlock fail:(FailBlock)failBlock;
+- (void)request;
 
 - (MYViewModel *)viewModelWithIndexPath:(NSIndexPath *)indexPath;
 

@@ -16,6 +16,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UINavigationBarAppearance * bar = [[UINavigationBarAppearance alloc] init];
+    bar.backgroundColor = [UIColor whiteColor];
+    bar.shadowColor = UIColor.whiteColor;
+//    bar.shadowImage = UIImage.new;
+    bar.backgroundEffect = nil;
+    self.navigationBar.scrollEdgeAppearance = bar;
+    self.navigationBar.standardAppearance = bar;
+    
 }
 
 @end

@@ -11,8 +11,10 @@
 
 @implementation MYDataSource
 
-- (void)requestWithSuccess:(SuccessBlock)successBlock fail:(FailBlock)failBlock {
-    
+- (void)request {
+    if (self.successBlock) {
+        self.successBlock();
+    }
 }
 
 - (MYViewModel *)headerViewModelWithSection:(NSInteger)section {
