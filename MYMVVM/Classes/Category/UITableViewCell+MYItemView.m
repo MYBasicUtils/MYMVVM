@@ -16,6 +16,7 @@
     if (self.itemView.superview) {
         [self.itemView removeFromSuperview];
     }
+    self.backgroundColor = UIColor.clearColor;
     objc_setAssociatedObject(self, @selector(itemView), itemView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self.contentView addSubview:itemView];
     [itemView mas_makeConstraints:^(MASConstraintMaker *make) {
