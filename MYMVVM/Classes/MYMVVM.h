@@ -12,5 +12,7 @@
 #import "MYViewController.h"
 #import "MYTableViewController.h"
 #import "MYViewModel.h"
+#import "MYDataSource.h"
+#import "MYSectionModel.h"
 
 #endif /* MYMVVM_h */
