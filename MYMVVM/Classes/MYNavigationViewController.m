@@ -7,6 +7,7 @@
 //
 
 #import "MYNavigationViewController.h"
+#import <MYSkin/MYSkin.h>
 
 @interface MYNavigationViewController ()
 
@@ -17,13 +18,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     UINavigationBarAppearance * bar = [[UINavigationBarAppearance alloc] init];
-    bar.backgroundColor = [UIColor whiteColor];
-    bar.shadowColor = UIColor.whiteColor;
-//    bar.shadowImage = UIImage.new;
+    bar.backgroundColor = TheSkin.whiteColor;
+    bar.shadowColor = TheSkin.whiteColor;
     bar.backgroundEffect = nil;
     self.navigationBar.scrollEdgeAppearance = bar;
     self.navigationBar.standardAppearance = bar;
     
+}
+
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    viewController.hidesBottomBarWhenPushed = YES;
+    [super pushViewController:viewController animated:animated];
+    viewController.hidesBottomBarWhenPushed = NO;
+}
+
+- (UIViewController *)childViewControllerForStatusBarStyle{
+    return self.topViewController;
 }
 
 @end
