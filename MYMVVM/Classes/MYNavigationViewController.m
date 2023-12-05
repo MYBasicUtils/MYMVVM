@@ -32,6 +32,16 @@
     viewController.hidesBottomBarWhenPushed = NO;
 }
 
+- (void)setBackColor:(UIColor *)backColor {
+    _backColor = backColor;
+    UINavigationBarAppearance * bar = [[UINavigationBarAppearance alloc] init];
+    bar.backgroundColor = backColor;
+    bar.shadowColor = backColor;
+    bar.backgroundEffect = nil;
+    self.navigationBar.scrollEdgeAppearance = bar;
+    self.navigationBar.standardAppearance = bar;
+}
+
 - (UIViewController *)childViewControllerForStatusBarStyle{
     return self.topViewController;
 }

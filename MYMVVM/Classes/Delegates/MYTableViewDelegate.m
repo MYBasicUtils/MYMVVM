@@ -38,9 +38,17 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     id<MYViewModelProtocol> viewModel = [self.dataSource footerViewModelWithSection:section];
-    UIView<MYItemViewProtocol> *itemView = [[[viewModel itemViewClass] alloc] init];
+    UIView<MYItemViewProtocol> *itemView = [self itemViewWithViewModel:viewModel];
     itemView.viewModel = viewModel;
     return itemView;
+}
+
+- (UIView<MYItemViewProtocol> *)itemViewWithViewModel:(id<MYViewModelProtocol>)viewModel {
+    Class itemViewClass = [viewModel itemViewClass];
+    if ([itemViewClass respondsToSelector:@selector(itemView)]) {
+        return [itemViewClass itemView];
+    }
+    return [[[viewModel itemViewClass] alloc] init];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -51,7 +59,7 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     id<MYViewModelProtocol> viewModel = [self.dataSource headerViewModelWithSection:section];
-    UIView<MYItemViewProtocol> *itemView = [[[viewModel itemViewClass] alloc] init];
+    UIView<MYItemViewProtocol> *itemView = [self itemViewWithViewModel:viewModel];
     itemView.viewModel = viewModel;
     return itemView;
 }
@@ -63,7 +71,7 @@
     cell.backgroundColor = [UIColor clearColor];
     UIView<MYItemViewProtocol> *itemView;
     if (!cell.itemView) {
-        itemView = [[[viewModel itemViewClass] alloc] init];
+        itemView = [self itemViewWithViewModel:viewModel];
         itemView.interactor = self.interactor;
         cell.itemView = itemView;
     } else {

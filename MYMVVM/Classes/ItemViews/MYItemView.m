@@ -29,7 +29,14 @@
 
 #pragma mark - --------------------private methods--------------
 #pragma mark - --------------------getters & setters & init members ------------------
-
++ (instancetype)itemViewWithBundleName:(NSString *)bundleName {
+    MYItemView *itemView;
+    NSBundle *cbundle = [NSBundle bundleForClass:self.class];
+    NSString *path = [cbundle pathForResource:bundleName ofType:@"bundle"];
+    NSBundle *bundle = [NSBundle bundleWithPath:path];
+    itemView = [bundle loadNibNamed:NSStringFromClass(self.class) owner:nil options:nil].firstObject;
+    return itemView;
+}
 
 - (void)onSelected {
     

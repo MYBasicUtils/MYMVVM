@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak) MYInteractor *interactor;
 @property (nonatomic, assign) MYItemViewSelectStyle itemviewStyle;
 
++ (instancetype)itemView;
++ (instancetype)itemViewWithBundleName:(NSString *)bundleName;
 @end
 
 NS_ASSUME_NONNULL_END

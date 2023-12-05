@@ -29,6 +29,8 @@ typedef enum : NSUInteger {
 
 - (void)onSelected;
 
++ (instancetype)itemView;
+
 @end
 
 #endif /* MYItemViewProtocol_h */

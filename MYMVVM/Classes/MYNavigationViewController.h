@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MYNavigationViewController : UINavigationController
 
+@property (nonatomic, strong) UIColor *backColor;/**< 背景颜色  */ 
+
 @end
 
 NS_ASSUME_NONNULL_END
