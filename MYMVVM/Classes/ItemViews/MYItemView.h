@@ -29,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)itemView;
 + (instancetype)itemViewWithBundleName:(NSString *)bundleName;
+
+- (void)onRefreshView;
+
 @end
 
 NS_ASSUME_NONNULL_END

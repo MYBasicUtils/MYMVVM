@@ -74,15 +74,48 @@
         itemView = [self itemViewWithViewModel:viewModel];
         itemView.interactor = self.interactor;
         cell.itemView = itemView;
+        [self configRightItemViewsWithCell:cell viewModel:viewModel];
     } else {
         itemView = cell.itemView;
     }
+    [self configRightItemViewsWithCell:cell viewModel:viewModel];
     cell.selectionStyle = (UITableViewCellSelectionStyle)itemView.itemviewStyle;
     viewModel.indexPath = indexPath;
     itemView.viewModel = viewModel;
     viewModel.itemView = itemView;
     return cell;
 }
+
+- (void)configRightItemViewsWithCell:(UITableViewCell *)cell viewModel:(id<MYViewModelProtocol>)viewModel {
+    if ([viewModel respondsToSelector:@selector(rightViewModels)] &&
+        viewModel.rightViewModels.count) {
+        NSMutableArray<UIView<MYItemViewProtocol> *> *rightItemViews =
+        [NSMutableArray<UIView<MYItemViewProtocol> *> arrayWithCapacity:viewModel.rightViewModels.count];
+        for (int i = 0; i < viewModel.rightViewModels.count; i++) {
+            id<MYViewModelProtocol> rightViewModel = [viewModel.rightViewModels my_objectAtIndex:i];
+            UIView<MYItemViewProtocol> *rightItemView = rightViewModel.itemView;
+            if (!rightItemView) {
+                rightItemView = [self configRightItemViewWithViewModel:[viewModel.rightViewModels my_objectAtIndex:i]];
+            }
+            rightItemView.viewModel = [viewModel.rightViewModels my_objectAtIndex:i];
+            [rightItemViews addObject:rightItemView];
+        }
+        cell.rightItemViews = rightItemViews;
+    } else {
+        cell.rightItemViews = @[];
+    }
+}
+
+- (UIView<MYItemViewProtocol> *)configRightItemViewWithViewModel:(id<MYViewModelProtocol>)viewModel {
+    UIView<MYItemViewProtocol> *rightItemView = [[[viewModel itemViewClass] alloc] init];
+    rightItemView.viewModel = viewModel;
+    rightItemView.viewModel.itemView = rightItemView;
+    [rightItemView.viewModel.itemView onRefreshView];
+    rightItemView.interactor = self.interactor;
+    
+    return rightItemView;
+}
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     id<MYViewModelProtocol> viewModel = [self.dataSource viewModelWithIndexPath:indexPath];

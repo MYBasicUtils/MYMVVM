@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSIndexPath *indexPath;
 @property (nonatomic, strong) NSObject *model;
 
+@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *leftViewModels;/**< 左侧按钮  */
+@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *rightViewModels;/**< 右侧按钮  */
 
 @end
 

@@ -10,6 +10,12 @@
 #define MYViewModelProtocol_h
 
 #import <UIKit/UIKit.h>
+typedef enum : NSUInteger {
+    MYMVVMTableViewCellEditingStyleNone,
+    MYMVVMTableViewCellEditingStyleDelete,
+    MYMVVMTableViewCellEditingStyleInsert,
+    MYMVVMTableViewCellEditingStyleCustom,
+} MYMVVMTableViewCellEditingStyle;
 
 @protocol MYItemViewProtocol;
 
@@ -22,6 +28,20 @@
 - (CGSize)itemSize;
 
 - (Class)itemViewClass;
+
+// --------
+// @Editing
+// --------
+@optional;
+
+
+- (MYMVVMTableViewCellEditingStyle)editStyle;
+
+- (NSString *)editText;
+
+/// 左滑按钮，配置滑动size时，height跟随itemView的size.height,在leftViewModel将只有size.width生效
+@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *leftViewModels;/**< 左侧按钮  */
+@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *rightViewModels;/**< 右侧按钮  */
 
 @end
 

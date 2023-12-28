@@ -31,6 +31,8 @@ typedef enum : NSUInteger {
 
 + (instancetype)itemView;
 
+- (void)onRefreshView;
+
 @end
 
 #endif /* MYItemViewProtocol_h */

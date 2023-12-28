@@ -15,6 +15,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) UIView<MYItemViewProtocol> *itemView;
 
+@property (nonatomic, strong) NSArray<UIView<MYItemViewProtocol> *> *leftItemViews;/**< 左侧  */
+@property (nonatomic, strong) NSArray<UIView<MYItemViewProtocol> *> *rightItemViews;/**< 右侧  */
+
+@property(nonatomic, weak) MYInteractor *interactor;/** < 交互层 */
+
+
+@property (nonatomic, assign) UIEdgeInsets itemViewInset;
+
+- (UIView *)shadowView;
+
 @end
 
 NS_ASSUME_NONNULL_END
