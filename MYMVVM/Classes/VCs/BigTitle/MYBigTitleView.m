@@ -39,7 +39,7 @@
 }
 
 - (MYItemViewSelectStyle)itemviewStyle {
-    return MYItemViewStyleNone;
+    return MYItemViewStyleDefaultNone;
 }
 
 - (void)initView {

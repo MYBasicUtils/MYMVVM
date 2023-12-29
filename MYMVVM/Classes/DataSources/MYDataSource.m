@@ -12,38 +12,36 @@
 @implementation MYDataSource
 
 - (void)request {
-    if (self.successBlock) {
-        self.successBlock();
-    }
+    NSAssert(nil, @"subclass should refact this method");
 }
 
-- (MYViewModel *)headerViewModelWithSection:(NSInteger)section {
-    id<MYSectionModelProtocol> sectionModel = [self.sectionModels my_objectAtSafeIndex:section];
-    MYViewModel *headerViewModel = sectionModel.headerViewModel;
-    return headerViewModel;
+//- (void)requestWithSuccess:(SuccessBlock)successBlock fail:(FailBlock)failBlock {
+//    NSAssert(nil, @"subclass should refact this method");
+//}
+
+- (id<MYSectionModelProtocol>)sectionModelWithSection:(NSInteger)section {
+    return [self.sectionModels my_safeObjectAtIndex:section];
 }
 
-- (MYViewModel *)footerViewModelWithSection:(NSInteger)section {
-    id<MYSectionModelProtocol> sectionModel = [self.sectionModels my_objectAtSafeIndex:section];
-    MYViewModel *footerViewModel = sectionModel.footerViewModel;
-    return footerViewModel;
+- (id<MYViewModelProtocol>)headerViewModelWithSection:(NSInteger)section {
+    return [self sectionModelWithSection:section].headerViewModel;
 }
 
-- (MYViewModel *)viewModelWithIndexPath:(NSIndexPath *)indexPath {
-    if (!self.sectionModels.count) {
-        return nil;
+- (id<MYViewModelProtocol>)footerViewModelWithSection:(NSInteger)section {
+    return [self sectionModelWithSection:section].footerViewModel;
+}
+
+- (id<MYViewModelProtocol>)viewModelWithIndexPath:(NSIndexPath *)indexPath {
+    id<MYSectionModelProtocol> sectionModel = [self sectionModelWithSection:indexPath.section];
+    return [sectionModel.viewModels my_safeObjectAtIndex:indexPath.row];
+}
+
+- (NSInteger)itemCount {
+    NSInteger sum = 0;
+    for (id<MYSectionModelProtocol> sectionModel in self.sectionModels) {
+        sum += [sectionModel viewModels].count;
     }
-    if (indexPath.section < self.sectionModels.count) {
-        id<MYSectionModelProtocol> sectionModel = [self.sectionModels my_objectAtSafeIndex:indexPath.section];
-        if (!sectionModel.viewModels.count) {
-            return nil;
-        }
-        if (indexPath.row < sectionModel.viewModels.count) {
-            id<MYViewModelProtocol> viewModel = (id<MYViewModelProtocol>)[sectionModel.viewModels objectAtIndex:indexPath.row];
-            return viewModel;
-        }
-    }
-    return nil;
+    return sum;
 }
 
 @end

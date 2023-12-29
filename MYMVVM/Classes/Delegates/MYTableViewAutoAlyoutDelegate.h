@@ -9,11 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @class MYDataSource;
+@class MYInteractor;
 
 @interface MYTableViewAutoAlyoutDelegate : NSObject <UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic, weak) MYDataSource *dataSource;/**< 数据源  */
-
+@property(nonatomic, weak) MYInteractor *interactor;/** < 交互层 */
+@property(nonatomic, weak) UIViewController *viewController;
 - (instancetype)initWithtableView:(UITableView *)tableView;
+
+
 @end
 

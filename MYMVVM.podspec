@@ -24,6 +24,6 @@ Pod::Spec.new do |s|
   s.dependency 'MYImageCache'
   s.dependency 'MYSkin'
   s.dependency 'MYIconfont'
-  s.dependency 'ReactiveCocoa'
+#  s.dependency 'ReactiveCocoa'
   
 end

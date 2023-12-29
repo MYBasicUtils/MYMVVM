@@ -11,28 +11,48 @@
 
 @protocol MYViewModelProtocol;
 
+@protocol MYViewModelProtocol;
+
 @class MYInteractor;
 
 typedef enum : NSUInteger {
-    MYItemViewStyleNone,
-    MYItemViewStyleBlue,
-    MYItemViewStyleGray,
-    MYItemViewStyleDefault
+    MYItemViewStyleDefaultNone,
+    MYItemViewStyleDefaultBlue,
+    MYItemViewStyleDefaultGray,
+    MYItemViewStyleDefaultDefault
 } MYItemViewSelectStyle;
 
 @protocol MYItemViewProtocol <NSObject>
 
 @property(nonatomic, weak) id<MYViewModelProtocol> viewModel;/**< 数据源  */
-@property(nonatomic, weak) MYInteractor *interactor;
 
-@property (nonatomic, assign) MYItemViewSelectStyle itemviewStyle;
-
-- (void)onSelected;
-
-+ (instancetype)itemView;
+- (CGSize)itemSize;
 
 - (void)onRefreshView;
 
+- (void)onSelected;
+
+
+@optional;
+
+@property(nonatomic, weak) MYInteractor *interactor;
+@property (nonatomic, assign) MYItemViewSelectStyle itemviewStyle;
+
+// --------
+// @Editing
+// --------
+@optional;
+- (UITableViewCellEditingStyle)editStyle;
+
+- (void)onEditDelete;
+
+- (void)onEditInsert;
+
+//// 自定义左滑、右滑按钮
+//@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *rightActionViewModels;/**< 右侧按钮  */
+//@property (nonatomic, strong) NSArray<UIView<MYViewModelProtocol> *> *leftActionViewModels;/**< 左侧按钮  */
+
 @end
+
 
 #endif /* MYItemViewProtocol_h */

@@ -10,28 +10,50 @@
 #import "MYSectionModel.h"
 #import "MYViewModel.h"
 
+#import <Foundation/Foundation.h>
+
 typedef void(^SuccessBlock)(void);
-typedef void(^FailureBlock)(NSError * _Nonnull error);
+typedef void(^Updatelock)(NSDictionary * _Nullable param);
+typedef void(^FailBlock)(NSError * _Nullable error);
+
+@protocol MYViewModelProtocol;
+
+@protocol MYSectionModelProtocol;
+
+@class MYInteractor;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MYDataSource : NSObject
 
-@property (nonatomic, strong) NSString *method;
+//TODO: wmy navigation头部控制
 
+@property (nonatomic, strong) NSArray<id<MYSectionModelProtocol>> *sectionModels;
+
+@property(nonatomic, weak) MYInteractor *interactor;/// < 交互
+
+/// request成功回调
 @property(nonatomic, copy) SuccessBlock successBlock;
 
-@property(nonatomic, copy) FailureBlock failureBlock;
+/// view需要update时调用
+@property(nonatomic, copy) Updatelock updateBlock;
 
-@property (nonatomic, strong) NSArray<MYSectionModel<MYSectionModelProtocol> *> *sectionModels;
+/// request失败回调
+@property(nonatomic, copy) FailBlock failBlock;
 
 - (void)request;
 
-- (MYViewModel *)viewModelWithIndexPath:(NSIndexPath *)indexPath;
+- (NSInteger)itemCount;
 
-- (MYViewModel *)headerViewModelWithSection:(NSInteger)section;
+//- (void)requestWithSuccess:(SuccessBlock)successBlock fail:(FailBlock)failBlock;
 
-- (MYViewModel *)footerViewModelWithSection:(NSInteger)section;
+- (id<MYSectionModelProtocol>)sectionModelWithSection:(NSInteger)section;
+
+- (id<MYViewModelProtocol>)viewModelWithIndexPath:(NSIndexPath *)indexPath;
+
+- (id<MYViewModelProtocol>)headerViewModelWithSection:(NSInteger)section;
+
+- (id<MYViewModelProtocol>)footerViewModelWithSection:(NSInteger)section;
 
 @end
 
