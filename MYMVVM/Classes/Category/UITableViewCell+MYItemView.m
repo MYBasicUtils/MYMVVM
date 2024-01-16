@@ -160,6 +160,12 @@ NSString *const kMVVMEventPackUpFinish = @"kEventPackUpFinish";
 
 @implementation UITableViewCell (MYItemView)
 
+- (void)dealloc {
+    [self.interactor unregisterTarget:self forEventName:kMVVMEventScroll];
+    [self.interactor unregisterTarget:self forEventName:kMVVMEventAppearEdit];
+    [self.interactor unregisterTarget:self forEventName:kMVVMEventPackUp];
+}
+
 - (void)setItemView:(UIView<MYItemViewProtocol> *)itemView {
     if (self.itemView.superview) {
         [self.itemView removeFromSuperview];
@@ -231,7 +237,6 @@ NSString *const kMVVMEventPackUpFinish = @"kEventPackUpFinish";
         [self.itemView addGestureRecognizer:self.panRecognizer];
     }
 }
-
 - (void)configInteractor {
     [self.interactor registerTarget:self action:@selector(onReceiveEventScroll:) forEventName:kMVVMEventScroll];
     [self.interactor registerTarget:self action:@selector(onReceiveEventAppearEdit:) forEventName:kMVVMEventAppearEdit];

@@ -12,6 +12,8 @@
 
 - (void)registerTarget:(id)action action:(SEL)select forEventName:(NSString *)eventName;
 
+- (void)unregisterTarget:(id)action forEventName:(NSString *)eventName;
+
 - (void)sendEventName:(NSString *)eventName withObjects:(id)object;
 
 @end

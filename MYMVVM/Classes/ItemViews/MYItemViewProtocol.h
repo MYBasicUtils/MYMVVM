@@ -32,6 +32,7 @@ typedef enum : NSUInteger {
 
 - (void)onSelected;
 
+- (void)didDisplay;
 
 @optional;
 

@@ -24,7 +24,7 @@
 
 @interface MYInteractor ()
 
-@property (nonatomic, strong) NSMutableDictionary<NSString */* eventName */,MYInteractorModel *> *actionDict;
+@property (nonatomic, strong) NSMutableDictionary<NSString */* eventName */,NSMutableArray<MYInteractorModel *> *> *actionDict;
 
 @end
 
@@ -32,10 +32,37 @@
 
 - (void)registerTarget:(id)target action:(SEL)select forEventName:(NSString *)eventName {
     if (!eventName.isEmpty && ![self.actionDict.allKeys containsObject:eventName]) {
+        NSMutableArray<MYInteractorModel *> *actions = [self actionsWithEventName:eventName];
         MYInteractorModel *model = [[MYInteractorModel alloc] init];
         model.target = target;
         model.selector = select;
-        self.actionDict[eventName] = model;
+        [actions addObject:model];
+    }
+}
+
+- (NSMutableArray<MYInteractorModel *> *)actionsWithEventName:(NSString *)eventName {
+    NSMutableArray<MYInteractorModel *> *actions = self.actionDict[eventName];
+    if (!actions) {
+        actions = [NSMutableArray array];
+        self.actionDict[eventName] = actions;
+    }
+    return actions;
+}
+
+- (void)unregisterTarget:(id)target forEventName:(NSString *)eventName {
+    if (!eventName.isEmpty && [self.actionDict.allKeys containsObject:eventName]) {
+        NSMutableArray<MYInteractorModel *> *models = [self actionsWithEventName:eventName];
+        MYInteractorModel *findModel;
+        for (MYInteractorModel *model in models) {
+            if ([model.target isEqual:target]) {
+                findModel = model;
+                break;
+            }
+        }
+        if (findModel) {
+            [models removeObject:findModel];
+            self.actionDict[eventName] = models;
+        }
     }
 }
 
@@ -44,13 +71,15 @@
     if (eventName.isEmpty || ![self.actionDict.allKeys containsObject:eventName]) {
         return;
     }
-    MYInteractorModel *model = self.actionDict[eventName];
-    if (model && model.target && model.selector &&
-        [model.target respondsToSelector:model.selector]) {
-        SuppressPerformSelectorLeakWarning(
-            [model.target performSelector:model.selector withObject:object];
-                                           );
-        
+    NSMutableArray<MYInteractorModel *> *models = [self actionsWithEventName:eventName];
+    for (MYInteractorModel *model in models) {
+        if (model && model.target && model.selector &&
+            [model.target respondsToSelector:model.selector]) {
+            SuppressPerformSelectorLeakWarning(
+                [model.target performSelector:model.selector withObject:object];
+                                               );
+            
+        }
     }
 }
 

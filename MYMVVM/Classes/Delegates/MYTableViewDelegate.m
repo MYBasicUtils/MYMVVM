@@ -25,6 +25,26 @@
     return self;
 }
 
+
+#pragma mark - Forward
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if (!_viewController) {
+        return nil;
+    }
+    if ([_viewController respondsToSelector:aSelector]) {
+        return _viewController;
+    }
+    return nil;
+}
+
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if (!_viewController) {
+        return [super respondsToSelector:aSelector];
+    }
+    return [super respondsToSelector:aSelector]
+    || [_viewController respondsToSelector:aSelector];
+}
+
 - (void)setDataSource:(MYDataSource *)dataSource {
     _dataSource = dataSource;
     [self.tableView reloadData];
@@ -140,39 +160,38 @@
     }
 }
 
-
-//TODO: wmy 需要优化
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
-        @weakify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self.viewController performSelector:@selector(scrollViewDidEndDecelerating:) withObject:scrollView];
-        });
-    }
-}
-
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
-        @weakify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self.viewController performSelector:@selector(scrollViewDidEndDragging:willDecelerate:)
-                                      withObject:scrollView
-                                      withObject:@(decelerate)];
-        });
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    if ([self.viewController respondsToSelector:@selector(scrollViewDidScroll:)]) {
-        @weakify(self);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            @strongify(self);
-            [self.viewController performSelector:@selector(scrollViewDidScroll:) withObject:scrollView];
-        });
-    }
-}
+////TODO: wmy 测试大标题的vc是否可行
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+//        @weakify(self);
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            @strongify(self);
+//            [self.viewController performSelector:@selector(scrollViewDidEndDecelerating:) withObject:scrollView];
+//        });
+//    }
+//}
+//
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+//    if ([self.viewController respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
+//        @weakify(self);
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            @strongify(self);
+//            [self.viewController performSelector:@selector(scrollViewDidEndDragging:willDecelerate:)
+//                                      withObject:scrollView
+//                                      withObject:@(decelerate)];
+//        });
+//    }
+//}
+//
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    if ([self.viewController respondsToSelector:@selector(scrollViewDidScroll:)]) {
+//        @weakify(self);
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            @strongify(self);
+//            [self.viewController performSelector:@selector(scrollViewDidScroll:) withObject:scrollView];
+//        });
+//    }
+//}
 
 
 

@@ -168,6 +168,16 @@ forHeaderFooterViewReuseIdentifier:NSStringFromClass(viewModel.itemViewClass)];
     }
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIView<MYItemViewProtocol> *itemView = cell.itemView;
+    if ([itemView respondsToSelector:@selector(didDisplay)]) {
+        [itemView didDisplay];
+    }
+}
+
+
+
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.viewController respondsToSelector:@selector(scrollViewDidScroll:)]) {
         @weakify(self);
