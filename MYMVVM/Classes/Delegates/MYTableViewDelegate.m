@@ -92,7 +92,7 @@
     UIView<MYItemViewProtocol> *itemView;
     if (!cell.itemView) {
         itemView = [self itemViewWithViewModel:viewModel];
-        itemView.interactor = self.interactor;
+        
         cell.itemView = itemView;
         [self configRightItemViewsWithCell:cell viewModel:viewModel];
     } else {
@@ -103,6 +103,7 @@
     viewModel.indexPath = indexPath;
     itemView.viewModel = viewModel;
     viewModel.itemView = itemView;
+    itemView.interactor = self.interactor;
     return cell;
 }
 

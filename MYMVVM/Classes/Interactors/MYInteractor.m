@@ -31,7 +31,7 @@
 @implementation MYInteractor
 
 - (void)registerTarget:(id)target action:(SEL)select forEventName:(NSString *)eventName {
-    if (!eventName.isEmpty && ![self.actionDict.allKeys containsObject:eventName]) {
+    if (!eventName.isEmpty) {
         NSMutableArray<MYInteractorModel *> *actions = [self actionsWithEventName:eventName];
         MYInteractorModel *model = [[MYInteractorModel alloc] init];
         model.target = target;

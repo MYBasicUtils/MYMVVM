@@ -61,9 +61,6 @@
     UIView<MYItemViewProtocol> *itemView;
     if (!cell.itemView) {
         itemView = [[[viewModel itemViewClass] alloc] init];
-        if ([itemView respondsToSelector:@selector(setInteractor:)]) {
-            itemView.interactor = self.interactor;
-        }
         cell.itemView = itemView;
     } else {
         itemView = cell.itemView;
@@ -73,6 +70,9 @@
     }
     viewModel.indexPath = indexPath;
     itemView.viewModel = viewModel;
+    if ([itemView respondsToSelector:@selector(setInteractor:)]) {
+        itemView.interactor = self.interactor;
+    }
     viewModel.itemView = itemView;
     return cell;
 }
@@ -167,16 +167,6 @@ forHeaderFooterViewReuseIdentifier:NSStringFromClass(viewModel.itemViewClass)];
         [itemView onSelected];
     }
 }
-
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIView<MYItemViewProtocol> *itemView = cell.itemView;
-    if ([itemView respondsToSelector:@selector(didDisplay)]) {
-        [itemView didDisplay];
-    }
-}
-
-
-
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     if ([self.viewController respondsToSelector:@selector(scrollViewDidScroll:)]) {
