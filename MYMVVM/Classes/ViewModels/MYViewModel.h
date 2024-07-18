@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MBProgressHUD+MYUtils.h"
+#import <MYUIKit/MYUIKit.h>
+#import <MYUtils/MYUtils.h>
 #import "MYViewModel.h"
-#import "MYUtils.h"
 #import "MYViewModelProtocol.h"
 //#import "MYSkinManager.h"
 #import "MYItemView.h"

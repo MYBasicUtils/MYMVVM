@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => 'https://github.com/WenMingYan/MYMVVM.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '15.0'
-
+  
   s.source_files = 'MYMVVM/Classes/**/*'
   
   s.dependency 'MYUtils'
@@ -23,6 +23,7 @@ Pod::Spec.new do |s|
   s.dependency 'MYRouter'
   s.dependency 'MYImageCache'
   s.dependency 'MYSkin'
+  s.dependency 'MYUIKit'
   s.dependency 'MYIconfont'
 #  s.dependency 'ReactiveCocoa'
   

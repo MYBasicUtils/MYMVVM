@@ -45,6 +45,7 @@
         _tableView = [[UITableView alloc] init];
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.backgroundColor = UIColor.clearColor;
+        _tableView.sectionHeaderTopPadding = 0;
     }
     return _tableView;
 }

@@ -46,4 +46,8 @@
     
 }
 
++ (nonnull instancetype)itemView {
+    return [self new];
+}
+
 @end
